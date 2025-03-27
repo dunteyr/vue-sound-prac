@@ -10,6 +10,25 @@ export const useSoundsStore = defineStore('sounds', {
     }),
 
     actions: {
+        addOctaveNum(octave){
+            const newNotes = [...this.notes]
+            for (let i=0; i<newNotes.length; i++){
+                if(i<3){
+                    newNotes[i] += octave
+                }
+                else{
+                    newNotes[i] += (Number(octave)+1)
+                }
+            }
+            return newNotes
+        },
+        getAllNotes(){
+            const allNotes = []
+            for(let i=1; i<6; i++){
+                allNotes.push(...this.addOctaveNum(i))
+            }
+            return allNotes
+        }
 
     },
 })

@@ -18,18 +18,6 @@ function playSound(){
   Tone.start()
   synth.triggerAttackRelease(selectedNote.value, selectedLength.value)
 }
-function addOctaveNum(octave) {
-  const newNotes = [...this.notes]
-  for (let i=0; i<newNotes.length; i++){
-    if(i<3){
-      newNotes[i] += octave
-    }
-    else{
-      newNotes[i] += (Number(octave)+1)
-    }
-  }
-  return newNotes
-}
 
 </script>
 
@@ -64,7 +52,7 @@ function addOctaveNum(octave) {
     <div class="setting">
       <label for="note">Note</label>
       <select name="note" v-model="selectedNote">
-        <option v-for="note in addOctaveNum(selectedOctave)" :value="note" :key="note">{{ note }}</option>
+        <option v-for="note in soundsStore.addOctaveNum(selectedOctave)" :value="note" :key="note">{{ note }}</option>
 
       </select>
     </div>

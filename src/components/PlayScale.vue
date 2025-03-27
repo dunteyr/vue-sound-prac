@@ -4,9 +4,10 @@ import { useSoundsStore } from '@/stores/store.js'
 import { storeToRefs } from 'pinia'
 
 const soundsStore = useSoundsStore()
-const { scaleTypes } = storeToRefs(soundsStore)
+const { scaleTypes, notes } = storeToRefs(soundsStore)
 
 const selectedScaleType = ref(scaleTypes[0])
+const selectedScaleNote = ref('c4')
 </script>
 
 <template>
@@ -18,6 +19,15 @@ const selectedScaleType = ref(scaleTypes[0])
                 v-model="selectedScaleType">
                 <option v-for="scale in scaleTypes" :value="scale.name" :key="scale.name">{{ scale.name }}</option>
             </select>            
+        </div>
+        <div class="setting">
+            <label for="scale-note">Scale Root</label>
+            <select
+                name="scale-note"
+                v-model="selectedScaleNote">
+                <option v-for="note in soundsStore.getAllNotes()" :value="note" :key="note">{{ note }}</option>
+
+            </select>
         </div>
 
     </div>
