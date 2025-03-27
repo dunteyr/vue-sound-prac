@@ -11,7 +11,7 @@ const selectedScaleType = ref(scaleTypes[0])
 
 <template>
     <div class="component">
-        <div class="scale-type">
+        <div class="setting">
             <label for="scale-type">Scale Type</label>
             <select
                 name="scale-type"

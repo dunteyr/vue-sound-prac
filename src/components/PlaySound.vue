@@ -34,8 +34,8 @@ function addOctaveNum(octave) {
 </script>
 
 <template>
-  <div class="note-settings">
-    <div class="note-length">
+  <div class="component">
+    <div class="setting">
       <label for="length">Note Length</label>
       <div class="length-slider">
         <input 
@@ -45,10 +45,10 @@ function addOctaveNum(octave) {
           min="0.1"
           max="1.0"
           step="0.1"/>
-          <span id="selected-length">{{ selectedLength + ' Second(s)' }}</span>
+          <span class="live-label">{{ selectedLength + ' Second(s)' }}</span>
       </div>
     </div>
-    <div class="scale-octave">
+    <div class="setting">
       <label for="octave">Octave</label>
       <div class="octave-slider">
         <input
@@ -58,10 +58,10 @@ function addOctaveNum(octave) {
           max="5"
           step="1"
           v-model="selectedOctave"/>
-          <span id="selected-octave">{{ selectedOctave }}</span>
+          <span class="live-label">{{ selectedOctave }}</span>
       </div>
     </div>
-    <div class="note">
+    <div class="setting">
       <label for="note">Note</label>
       <select name="note" v-model="selectedNote">
         <option v-for="note in addOctaveNum(selectedOctave)" :value="note" :key="note">{{ note }}</option>
@@ -73,29 +73,8 @@ function addOctaveNum(octave) {
 </template>
 
 <style scoped>
-.note-settings, .note-length, .note, .scale-octave {
-  display: flex;
-  flex-direction: column;
-}
-.note-length, .note, .scale-octave {
-  margin: 10px;
-}
-button {
-  margin: 20px;
-  padding: 10px;
-  background-color: #15EB55;
-  border: none;
-  border-radius: 20px;
-}
-button:hover {
-  background-color: #03d341
-}
-button:active {
-  background-color: #56ec83
-}
-#selected-length, #selected-octave {
-  display: inline-block;
-  width: 130px;
-  text-align: center;
-}
+
+
+
+
 </style>
