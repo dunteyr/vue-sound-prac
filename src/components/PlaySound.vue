@@ -25,7 +25,7 @@ function addOctaveNum(octave) {
       newNotes[i] += octave
     }
     else{
-      newNotes[i] += (octave+1)
+      newNotes[i] += (Number(octave)+1)
     }
   }
   return newNotes
@@ -64,7 +64,7 @@ function addOctaveNum(octave) {
     <div class="note">
       <label for="note">Note</label>
       <select name="note" v-model="selectedNote">
-        <option v-for="note in addOctaveNum(selectedOctave)" :value="note">{{ note }}</option>
+        <option v-for="note in addOctaveNum(selectedOctave)" :value="note" :key="note">{{ note }}</option>
 
       </select>
     </div>
