@@ -16,6 +16,7 @@ import PlayScale from './components/PlayScale.vue'
 .component {
   display: flex;
   flex-direction: column;
+  min-height: 35vh;
 }
 
 .setting {
@@ -37,6 +38,7 @@ button {
   background-color: #15EB55;
   border: none;
   border-radius: 20px;
+  margin-top:auto;
 }
 button:hover {
   background-color: #03d341
