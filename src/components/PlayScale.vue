@@ -29,7 +29,7 @@ const selectedScaleNote = ref('c4')
 
             </select>
         </div>
-        <button type="button">Play Scale</button>
+        <button type="button">Play Scale </button>
     </div>
     
 
