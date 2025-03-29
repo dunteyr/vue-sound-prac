@@ -19,6 +19,10 @@ import PlayMelody from './components/PlayMelody.vue'
   display: flex;
   flex-direction: column;
   min-height: 35vh;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid grey;
+  border-radius: 20px;
 }
 
 .setting {
