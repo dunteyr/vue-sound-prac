@@ -9,17 +9,6 @@ const { scaleTypes, notes } = storeToRefs(soundsStore)
 
 const selectedScaleType = ref(scaleTypes.value[0].name)
 const selectedScaleNote = ref('c4')
-
-const synth = new Tone.Synth().toDestination();
-
-async function playScale(){
-    await Tone.start()
-    const scaleToPlay = soundsStore.createScale(selectedScaleType.value, selectedScaleNote.value)
-
-    for (let i = 0; i < scaleToPlay.length; i++) {
-        synth.triggerAttackRelease(scaleToPlay[i], '8n', Tone.now() + i * 0.5)
-    }
-}
 </script>
 
 <template>
@@ -41,11 +30,19 @@ async function playScale(){
 
             </select>
         </div>
-        <button class="main-button" type="button" @click="playScale">Play Scale</button>
+        <div class="sub-button-container">
+            <button class="sub-button" type="button">Create Melody</button>
+            <button class="sub-button" type="button">Clear Melody</button>
+        </div>
+        <button class="main-button" type="button">Play Melody</button>
     </div>
-    
-
 </template>
 
 <style scoped>
+.sub-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+}
 </style>

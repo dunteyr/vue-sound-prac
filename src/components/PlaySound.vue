@@ -56,7 +56,7 @@ function playSound(){
 
       </select>
     </div>
-    <button type="button" @click="playSound">Play Sound</button>
+    <button class="main-button" type="button" @click="playSound">Play Sound</button>
   </div>    
 </template>
 

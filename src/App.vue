@@ -1,12 +1,14 @@
 <script setup>
 import PlaySound from './components/PlaySound.vue'
 import PlayScale from './components/PlayScale.vue'
+import PlayMelody from './components/PlayMelody.vue'
 
 </script>
 
 <template>
   <PlaySound />
   <PlayScale />
+  <PlayMelody />
 </template>
 
 
@@ -32,13 +34,23 @@ import PlayScale from './components/PlayScale.vue'
   text-align: center;
 }
 
-button {
+.main-button {
   margin: 20px;
   padding: 10px;
-  background-color: #15EB55;
   border: none;
   border-radius: 20px;
   margin-top:auto;
+}
+
+.sub-button {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+}
+
+button {
+  background-color: #15EB55;
 }
 button:hover {
   background-color: #03d341
