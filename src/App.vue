@@ -6,19 +6,26 @@ import PlayMelody from './components/PlayMelody.vue'
 </script>
 
 <template>
-  <PlaySound />
-  <PlayScale />
-  <PlayMelody />
+  <div class="component-wrapper">
+    <PlaySound />
+    <PlayScale />
+    <PlayMelody />
+  </div>
 </template>
 
 
 <style>
 /* global styles for the components above */
+.component-wrapper {
+  display: flex;
+  flex-direction: row;
+}
 
 .component {
   display: flex;
   flex-direction: column;
   min-height: 35vh;
+  min-width: 20vw;
   margin: 10px;
   padding: 10px;
   border: 2px solid grey;
@@ -48,9 +55,10 @@ import PlayMelody from './components/PlayMelody.vue'
 
 .sub-button {
   margin: 10px;
-  padding: 10px;
+  padding: 8px 10px;
   border: none;
   border-radius: 20px;
+  font-size: smaller;
 }
 
 button {
