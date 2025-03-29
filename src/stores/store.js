@@ -11,6 +11,9 @@ export const useSoundsStore = defineStore('sounds', {
             {name: 'Mixolydian', formula: [2,2,1,2,2,1,2]},
             {name: 'Aeolian', formula: [2,1,2,2,1,2,2]},
             {name: 'Locrian', formula: [1,2,2,1,2,2,2]},
+        ],
+        oscTypes: [
+            "sine", "square", "sawtooth", "triangle"
         ]
     }),
 
