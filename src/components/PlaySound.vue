@@ -24,7 +24,6 @@ async function playSound(){
   await Tone.start()
   const synth = soundsStore.createSynth(props.synthSettings)
   synth.triggerAttackRelease(selectedNote.value, selectedLength.value)
-  console.log(synth.filter)
 }
 
 </script>

@@ -75,15 +75,23 @@ export const useSoundsStore = defineStore('sounds', {
                     type: synthSettings.oscType
                 },
                 envelope: {
-                    attack: 0,
-                    release: 0,
-                    // sustain: 1,
-                    // decay: 0
-
+                    attack: 0.2,
+                    decay: 0.001,
+                    sustain: 1,
+                    release: 0.2
+                  },
+                filter: {
+                    Q: 0,
+                    type: 'lowpass',
+                    rolloff: -12
                 },
                 filterEnvelope: {
-                    frequency: 20000,
-                    type: 'lowpass'
+                    attack: 0.2,
+                    decay: 0.001,
+                    sustain: 1,
+                    release: 0.2,
+                    baseFrequency: 20000, // effectively disables filter shaping
+                    octaves: 0
                 },
                 volume: synthSettings.vol
             }).toDestination()
