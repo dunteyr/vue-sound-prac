@@ -37,7 +37,7 @@ const synthSettings = reactive({
       </div>
       <div class="setting">
         <label for="volume">Volume</label>
-        <div class="volume-slider">
+        <div class="slider-container">
           <input
             type="range"
             min="-12"
@@ -79,7 +79,7 @@ const synthSettings = reactive({
 .component {
   display: flex;
   flex-direction: column;
-  min-height: 35vh;
+  min-height: 40vh;
   min-width: 20vw;
   margin: 10px;
   padding: 10px;
@@ -98,6 +98,11 @@ const synthSettings = reactive({
   display: inline-block;
   width: 130px;
   text-align: center;
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .main-button {

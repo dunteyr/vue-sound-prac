@@ -32,7 +32,7 @@ async function playSound(){
   <div class="component">
     <div class="setting">
       <label for="length">Note Length</label>
-      <div class="length-slider">
+      <div class="slider-container">
         <input 
           name="length" 
           type="range" 
@@ -45,7 +45,7 @@ async function playSound(){
     </div>
     <div class="setting">
       <label for="octave">Octave</label>
-      <div class="octave-slider">
+      <div class="slider-container">
         <input
           name="octave"
           type="range"
@@ -68,8 +68,5 @@ async function playSound(){
 </template>
 
 <style scoped>
-
-
-
 
 </style>

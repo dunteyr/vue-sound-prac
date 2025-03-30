@@ -9,6 +9,18 @@ const { scaleTypes, notes } = storeToRefs(soundsStore)
 
 const selectedScaleType = ref(scaleTypes.value[0].name)
 const selectedScaleNote = ref('c4')
+const selectedMelodyLength = ref(1)
+
+const storedMelody = ref([])
+
+function createMelody(){
+    const key = soundsStore.createKey(selectedScaleType.value, selectedScaleNote.value)
+    console.log(key)
+}
+
+function clearMelody(){
+    storedMelody = ref([])
+}
 </script>
 
 <template>
@@ -30,9 +42,16 @@ const selectedScaleNote = ref('c4')
 
             </select>
         </div>
+        <div class="setting">
+            <label for="melody-length">Length (Measures)</label>
+            <div class="slider-container">
+                <input type="range" min="1" max="4" step="1" v-model="selectedMelodyLength"/>
+                <span class="live-label">{{ selectedMelodyLength }}</span>
+            </div>
+        </div>
         <div class="sub-button-container">
-            <button class="sub-button" type="button">Create Melody</button>
-            <button class="sub-button" type="button">Clear Melody</button>
+            <button class="sub-button" type="button" @click="createMelody">Create Melody</button>
+            <button class="sub-button" type="button" @click="clearMelody">Clear Melody</button>
         </div>
         <button class="main-button" type="button">Play Melody</button>
     </div>

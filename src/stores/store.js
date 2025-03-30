@@ -69,6 +69,33 @@ export const useSoundsStore = defineStore('sounds', {
             return scaleNotes
 
         },
+        //same as createScale but an octave higher and lower as well
+        createKey(type, rootNote){
+            // chatgpt shit to get octave from rest of string 
+            let match = rootNote.match(/^([a-gA-G#b]+)(\d+)$/)
+            let lowerNote = ''
+            let higherNote = ''
+            if(match){
+                let pitch = match[1]; // 'c'
+                let octave = parseInt(match[2], 10); // 3
+                lowerNote = pitch + (octave - 1); // 'c2'
+                higherNote = pitch + (octave + 1) // 'c4'
+            }
+            // create scales for the rootNote and the above and below it an octave
+            // also remove last note in array (it is the root note up an octave)
+            const lowerScale = this.createScale(type, lowerNote)
+            lowerScale.splice(lowerScale.length - 1, 1)
+            const baseScale = this.createScale(type, rootNote)
+            baseScale.splice(baseScale.length - 1, 1)
+            const higherScale = this.createScale(type, higherNote)
+            higherScale.splice(higherScale.length - 1, 1)
+            const key = [...lowerScale]
+            key.push(...baseScale)
+            key.push(...higherScale)
+
+            return key
+
+        },
         createSynth(synthSettings) {
             return new Tone.MonoSynth({
                 oscillator: {
