@@ -96,7 +96,7 @@ const synthSettings = reactive({
 /* syles for spans that show the range slider value */
 .live-label {
   display: inline-block;
-  width: 130px;
+  margin: 0px 10px;
   text-align: center;
 }
 

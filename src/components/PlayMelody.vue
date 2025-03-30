@@ -13,8 +13,32 @@ const selectedMelodyLength = ref(1)
 
 const storedMelody = ref([])
 
+function createMelodyRhythm(length){
+    
+    let currentLength = 0
+    // total length in 16th notes
+    let totalLength = length * 16
+    const notes = [
+        {noteName: '16n', noteLength: 1},
+        {noteName: '8n', noteLength: 2},
+        {noteName: '4n', noteLength: 4}
+    ]
+    const melodyRhythm = []
+
+    // until the requested length is full, add notes to the rhythm array
+    while (currentLength < totalLength) {
+        // add random note to rhythm array
+        let randomNumber = Math.floor(Math.random() * notes.length)
+        melodyRhythm.push(notes[randomNumber].noteName)
+        // add the length of that note to the tally
+        currentLength += notes[randomNumber].noteLength
+    }
+    return melodyRhythm
+}
 function createMelody(){
     const key = soundsStore.createKey(selectedScaleType.value, selectedScaleNote.value)
+    const melodyRhythm = createMelodyRhythm(selectedMelodyLength.value)
+    console.log(melodyRhythm)
     console.log(key)
 }
 
