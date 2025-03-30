@@ -4,6 +4,13 @@ import { useSoundsStore } from '@/stores/store.js'
 import { storeToRefs } from 'pinia'
 import * as Tone from "tone"
 
+const props = defineProps({
+    synthSettings: {
+        type: Object,
+        required: true
+    }
+})
+
 const soundsStore = useSoundsStore()
 const { scaleTypes, notes } = storeToRefs(soundsStore)
 
@@ -14,6 +21,7 @@ const synth = new Tone.Synth().toDestination();
 
 async function playScale(){
     await Tone.start()
+    const synth = soundsStore.createSynth(props.synthSettings)
     const scaleToPlay = soundsStore.createScale(selectedScaleType.value, selectedScaleNote.value)
 
     for (let i = 0; i < scaleToPlay.length; i++) {

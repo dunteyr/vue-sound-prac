@@ -4,19 +4,27 @@ import * as Tone from "tone"
 import { useSoundsStore } from '@/stores/store.js'
 import { storeToRefs } from 'pinia'
 
+const props = defineProps({
+  synthSettings: {
+    type: Object,
+    required: true
+  }
+})
 const soundsStore = useSoundsStore()
 const { notes } = storeToRefs(soundsStore)
 
-const synth = new Tone.Synth().toDestination();
+// const synth = new Tone.Synth().toDestination();
 // const notes = ['a3','b3','c4','d4','e4','f4','g4']
 
 const selectedNote = ref('c4')
 const selectedLength = ref(0.5)
 const selectedOctave = ref(3)
 
-function playSound(){
-  Tone.start()
+async function playSound(){
+  await Tone.start()
+  const synth = soundsStore.createSynth(props.synthSettings)
   synth.triggerAttackRelease(selectedNote.value, selectedLength.value)
+  console.log(synth.filter)
 }
 
 </script>

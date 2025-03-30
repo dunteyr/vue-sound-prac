@@ -3,7 +3,7 @@ import PlaySound from './components/PlaySound.vue'
 import PlayScale from './components/PlayScale.vue'
 import PlayMelody from './components/PlayMelody.vue'
 import * as Tone from 'tone'
-import { ref } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import { useSoundsStore } from './stores/store'
 import { storeToRefs } from 'pinia'
 
@@ -12,18 +12,16 @@ const { oscTypes } = storeToRefs(store)
 
 const selectedOsc = ref(oscTypes.value[0])
 const selectedVol = ref(1)
-console.log(selectedVol.value)
 
-const synth = new Tone.MonoSynth({
-  oscillator: {
-    type: selectedOsc.value
-  },
-  envelope: {
-    attack: 0.1,
-    release: 0.2
-  },
-  volume: selectedVol.value
+const synthSettings = reactive({
+  oscType: selectedOsc,
+  vol: selectedVol
 })
+
+// watch(selectedOsc, () => {
+//   console.log(selectedOsc.value)
+// })
+
 
 </script>
 
@@ -42,8 +40,8 @@ const synth = new Tone.MonoSynth({
         <div class="volume-slider">
           <input
             type="range"
-            min="0"
-            max="6"
+            min="-12"
+            max="12"
             step="0.5"
             v-model="selectedVol"/>
           <span class="live-label">{{ selectedVol }}</span>
@@ -51,8 +49,8 @@ const synth = new Tone.MonoSynth({
       </div>
     </div>
     <div class="component-wrapper">
-      <PlaySound />
-      <PlayScale />
+      <PlaySound :synthSettings="synthSettings"/>
+      <PlayScale :synthSettings="synthSettings"/>
       <PlayMelody />
     </div>
   </div>

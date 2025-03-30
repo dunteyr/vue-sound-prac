@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import * as Tone from 'tone'
 
 export const useSoundsStore = defineStore('sounds', {
     state: () => ({
@@ -67,6 +68,25 @@ export const useSoundsStore = defineStore('sounds', {
             }
             return scaleNotes
 
+        },
+        createSynth(synthSettings) {
+            return new Tone.MonoSynth({
+                oscillator: {
+                    type: synthSettings.oscType
+                },
+                envelope: {
+                    attack: 0,
+                    release: 0,
+                    // sustain: 1,
+                    // decay: 0
+
+                },
+                filterEnvelope: {
+                    frequency: 20000,
+                    type: 'lowpass'
+                },
+                volume: synthSettings.vol
+            }).toDestination()
         }
 
     },
