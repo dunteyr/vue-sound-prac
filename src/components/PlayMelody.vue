@@ -64,14 +64,18 @@ function clearMelody(){
 }
 
 function playMelody(){
-    console.log('Play Melody')
-    Tone.start()
-    const synth = soundsStore.createSynth(props.synthSettings)
-
-    for (let i = 0; i < storedMelody.value.length; i++) {
-        console.log(storedMelody.value[i].noteName)
-        synth.triggerAttackRelease(storedMelody.value[i].noteName, storedMelody.value[i].noteLength, Tone.now() + i * 0.5)
-
+    if (storedMelody.value.length != 0) {
+        Tone.start()
+        const synth = soundsStore.createSynth(props.synthSettings)
+    
+        for (let i = 0; i < storedMelody.value.length; i++) {
+            console.log(storedMelody.value[i].noteName)
+            synth.triggerAttackRelease(storedMelody.value[i].noteName, storedMelody.value[i].noteLength, Tone.now() + i * 0.5)
+    
+        }
+    }
+    else{
+        alert("Create a melody first")
     }
 }
 </script>
