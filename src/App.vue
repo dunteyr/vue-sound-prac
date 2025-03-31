@@ -51,7 +51,7 @@ const synthSettings = reactive({
     <div class="component-wrapper">
       <PlaySound :synthSettings="synthSettings"/>
       <PlayScale :synthSettings="synthSettings"/>
-      <PlayMelody />
+      <PlayMelody :synthSettings="synthSettings"/>
     </div>
   </div>
 </template>
