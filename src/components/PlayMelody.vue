@@ -70,7 +70,7 @@ function playMelody(){
 
     for (let i = 0; i < storedMelody.value.length; i++) {
         console.log(storedMelody.value[i].noteName)
-        synth.triggerAttackRelease(storedMelody.value[i].noteName, storedMelody.value[i].noteLength, Tone.now())
+        synth.triggerAttackRelease(storedMelody.value[i].noteName, storedMelody.value[i].noteLength, Tone.now() + i * 0.5)
 
     }
 }
