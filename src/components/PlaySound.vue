@@ -31,29 +31,32 @@ async function playSound(){
 <template>
   <div class="component">
     <div class="setting">
-      <label for="length">Note Length</label>
+      <p>Note Length</p>
       <div class="slider-container">
-        <input 
-          name="length" 
-          type="range" 
+        <v-slider 
           v-model="selectedLength"
-          min="0.1"
-          max="1.0"
-          step="0.1"/>
-          <span class="live-label">{{ selectedLength + ' Second(s)' }}</span>
+          :min="0.1"
+          :max="1.0"
+          :step="0.1"
+          hide-details>
+          <template v-slot:append>
+            <p style="width: 21px">{{ selectedLength }}</p>
+          </template>
+        </v-slider>
       </div>
     </div>
     <div class="setting">
       <label for="octave">Octave</label>
       <div class="slider-container">
-        <input
-          name="octave"
-          type="range"
-          min="1"
-          max="5"
-          step="1"
-          v-model="selectedOctave"/>
-          <span class="live-label">{{ selectedOctave }}</span>
+        <v-slider
+          :min="1"
+          :max="5"
+          :step="1"
+          v-model="selectedOctave">
+          <template v-slot:append>
+            <p style="width: 21px">{{ selectedOctave }}</p>
+          </template>
+        </v-slider>
       </div>
     </div>
     <div class="setting">
