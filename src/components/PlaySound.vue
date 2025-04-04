@@ -60,13 +60,14 @@ async function playSound(){
       </div>
     </div>
     <div class="setting">
-      <label for="note">Note</label>
-      <select name="note" v-model="selectedNote">
-        <option v-for="note in soundsStore.addOctaveNum(selectedOctave)" :value="note" :key="note">{{ note }}</option>
-
-      </select>
+      <v-select 
+        label="Note" 
+        v-model="selectedNote"
+        :items="soundsStore.addOctaveNum(selectedOctave)"
+        density="compact">
+      </v-select>
     </div>
-    <button class="main-button" type="button" @click="playSound">Play Sound</button>
+    <v-btn color="green" type="tonal" @click="playSound">Play Sound</v-btn>
   </div>    
 </template>
 

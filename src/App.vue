@@ -121,7 +121,7 @@ const synthSettings = reactive({
   font-size: smaller;
 }
 
-button {
+/* button {
   background-color: #15EB55;
 }
 button:hover {
@@ -129,6 +129,6 @@ button:hover {
 }
 button:active {
   background-color: #56ec83
-}
+} */
 
 </style>
